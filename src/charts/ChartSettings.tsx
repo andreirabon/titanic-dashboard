@@ -34,37 +34,47 @@ export const chartConfig = {
 	},
 } satisfies ChartConfig;
 
-export const aliveradialData = [{ browser: "safari", visitors: 200, fill: "var(--color-safari)" }];
+export const aliveradialData = [{ value: 342, fill: "var(--color-safari)" }];
 
-export const unaliveradialData = [{ browser: "safari", visitors: 100, fill: "#7F1D1D" }];
+export const unaliveradialData = [{ value: 550, fill: "#7F1D1D" }];
 
 export const pclassData = [
-	{ month: "First Class", desktop: 216, fill: "hsl(220 70% 50%)" },
-	{ month: "Second Class", desktop: 184, fill: "hsl(160 60% 45%)" },
-	{ month: "Third Class", desktop: 491, fill: "hsl(30 80% 55%)" },
+	{ class: "First Class", value: 216, fill: "hsl(220 70% 50%)" },
+	{ class: "Second Class", value: 184, fill: "hsl(160 60% 45%)" },
+	{ class: "Third Class", value: 491, fill: "hsl(30 80% 55%)" },
 ];
 
-export const genderData = [
-	{ browser: "Male", visitors: 577, fill: "#2662D9" },
-	{ browser: "Female", visitors: 314, fill: "#7F1D1D" },
+export const genderData1 = [
+	{ sex: "Male", value: 577, fill: "#2662D9" },
+	{ sex: "Female", value: 314, fill: "#7F1D1D" },
+];
+
+export const genderData2 = [
+	{ status: "Survived", value: 109, fill: "#2662D9" },
+	{ status: "Did Not Survive", value: 468, fill: "#7F1D1D" },
+];
+
+export const genderData3 = [
+	{ status: "Survived", value: 233, fill: "#2662D9" },
+	{ status: "Did Not Survive", value: 81, fill: "#7F1D1D" },
 ];
 
 export const ageData = [
-	{ month: "0s", desktop: 0 },
-	{ month: "10s", desktop: 12 },
-	{ month: "20s", desktop: 24 },
-	{ month: "30s", desktop: 35 },
-	{ month: "40s", desktop: 42 },
-	{ month: "50s", desktop: 58 },
-	{ month: "60s", desktop: 61 },
-	{ month: "70s", desktop: 79 },
-	{ month: "80s", desktop: 81 },
-	{ month: "90s", desktop: 94 },
-	{ month: "100s", desktop: 0 },
+	{ range: "0s", value: 40 },
+	{ range: "10s", value: 211 },
+	{ range: "20s", value: 263 },
+	{ range: "30s", value: 169 },
+	{ range: "40s", value: 118 },
+	{ range: "50s", value: 51 },
+	{ range: "60s", value: 26 },
+	{ range: "70s", value: 11 },
+	{ range: "80s", value: 2 },
+	{ range: "90s", value: 0 },
+	{ range: "100s", value: 0 },
 ];
 
 export const embarkedData = [
-	{ month: "Cherbourg (C) ", desktop: 216, fill: "hsl(220 70% 50%)" },
-	{ month: "Queenstown (Q)", desktop: 184, fill: "hsl(160 60% 45%)" },
-	{ month: "Southampton (S)", desktop: 491, fill: "hsl(30 80% 55%)" },
+	{ embarked: "Cherbourg (C) ", value: 216, fill: "hsl(220 70% 50%)" },
+	{ embarked: "Queenstown (Q)", value: 184, fill: "hsl(160 60% 45%)" },
+	{ embarked: "Southampton (S)", value: 491, fill: "hsl(30 80% 55%)" },
 ];
