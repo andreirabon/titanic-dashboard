@@ -56,9 +56,14 @@ function Charts() {
 	return (
 		<div className="relative">
 			<nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
-				<div className="flex items-center justify-between p-4 max-w-7xl mx-auto">
+				<div className="flex items-center justify-between p-4 max-w-7xl mx-auto gap-4">
 					<h1 className="text-2xl font-bold">Titanic Dashboard</h1>
 					<div className="flex gap-2">
+						<Button
+							variant="outline"
+							onClick={() => (window.location.href = "https://portfolio-sooty-omega-80.vercel.app/")}>
+							Andrei Portfolio
+						</Button>
 						<Button
 							variant="outline"
 							onClick={() => scrollToSection("survival")}>
