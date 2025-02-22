@@ -12,7 +12,7 @@ document.documentElement.classList.add("dark");
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
-		<div className="mx-auto flex min-h-screen max-w-6xl">
+		<div className="mx-auto flex min-h-screen max-w-4xl">
 			<div className="h-screen w-screen">
 				<GridExample />
 				<br />

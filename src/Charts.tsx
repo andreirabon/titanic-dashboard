@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import {
 	Pie,
 	PieChart,
@@ -14,6 +15,7 @@ import {
 	RadialBar,
 	RadialBarChart,
 } from "recharts";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import {
@@ -27,9 +29,56 @@ import {
 } from "./charts/ChartSettings";
 
 function Charts() {
+	const [showBackToTop, setShowBackToTop] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setShowBackToTop(window.scrollY > 300);
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
+
+	const scrollToTop = () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
+
+	const scrollToSection = (id: string) => {
+		const element = document.getElementById(id);
+		if (element) {
+			element.scrollIntoView({ behavior: 'smooth' });
+		}
+	};
+
 	return (
-		<>
-			{/* Div 1 */}
+		<div className="relative">
+			<nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+				<div className="flex items-center justify-between p-4 max-w-7xl mx-auto">
+					<h1 className="text-2xl font-bold">Titanic Dashboard</h1>
+					<div className="flex gap-2">
+						<Button variant="outline" onClick={() => scrollToSection('survival')}>Survival Stats</Button>
+						<Button variant="outline" onClick={() => scrollToSection('passenger-class')}>Passenger Class</Button>
+						<Button variant="outline" onClick={() => scrollToSection('demographics')}>Demographics</Button>
+						<Button variant="outline" onClick={() => scrollToSection('age')}>Age Distribution</Button>
+						<Button variant="outline" onClick={() => scrollToSection('embarkation')}>Embarkation</Button>
+					</div>
+				</div>
+			</nav>
+
+			{showBackToTop && (
+				<Button
+					variant="secondary"
+					className="fixed bottom-8 right-8 z-50 rounded-full w-12 h-12 p-0 shadow-lg"
+					onClick={scrollToTop}
+				>
+					↑
+				</Button>
+			)}
+
+			{/* Survival Statistics */}
+			<section id="survival" className="pt-16">
+				<h2 className="text-3xl font-bold text-center mb-8">Survival Statistics</h2>
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 p-4">
 				<Card className="flex flex-col">
 					<CardHeader className="items-center pb-0">
@@ -165,7 +214,10 @@ function Charts() {
 					</CardFooter>
 				</Card>
 			</div>
-			{/* Div 2 */}
+			{/* Passenger Class Distribution */}
+			</section>
+			<section id="passenger-class" className="pt-16">
+				<h2 className="text-3xl font-bold text-center mb-8">Passenger Class Distribution</h2>
 			<div className="grid grid-cols-1 gap-4 p-4">
 				<Card>
 					<CardHeader>
@@ -207,7 +259,10 @@ function Charts() {
 					</CardFooter>
 				</Card>
 			</div>
-			{/* Div 3 */}
+			{/* Demographics */}
+			</section>
+			<section id="demographics" className="pt-16">
+				<h2 className="text-3xl font-bold text-center mb-8">Passenger Demographics</h2>
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
 				{/* Chart 1 */}
 				<Card className="flex flex-col h-full">
@@ -296,7 +351,10 @@ function Charts() {
 					</CardFooter>
 				</Card>
 			</div>
-			{/* Div 5 */}
+			{/* Age Distribution */}
+			</section>
+			<section id="age" className="pt-16">
+				<h2 className="text-3xl font-bold text-center mb-8">Age Distribution</h2>
 			<div className="grid grid-cols-1 gap-4 p-4">
 				<Card>
 					<CardHeader>
@@ -344,7 +402,10 @@ function Charts() {
 					</CardFooter>
 				</Card>
 			</div>
-			{/* Div 6 */}
+			{/* Embarkation Points */}
+			</section>
+			<section id="embarkation" className="pt-16">
+				<h2 className="text-3xl font-bold text-center mb-8">Embarkation Points</h2>
 			<div className="grid grid-cols-1 gap-4 p-4">
 				<Card>
 					<CardHeader>
@@ -387,7 +448,8 @@ function Charts() {
 					</CardFooter>
 				</Card>
 			</div>
-		</>
+		</section>
+		</div>
 	);
 }
 
