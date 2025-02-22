@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import type { ColDef } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
+import { colorSchemeDarkBlue } from "ag-grid-community";
+import { themeQuartz } from "ag-grid-community";
 
 interface IRow {
 	passengerid: number;
@@ -11,6 +13,8 @@ interface IRow {
 	age: number;
 	embarked: string;
 }
+
+const myTheme = themeQuartz.withPart(colorSchemeDarkBlue);
 const GridExample = () => {
 	useEffect(() => {
 		fetch("/titanic.csv")
@@ -41,13 +45,13 @@ const GridExample = () => {
 	const [rowData, setRowData] = useState<IRow[]>([]);
 
 	const [colDefs] = useState<ColDef[]>([
-		{ field: "passengerid" },
-		{ field: "survived" },
-		{ field: "pclass" },
-		{ field: "name" },
-		{ field: "sex" },
-		{ field: "age" },
-		{ field: "embarked" },
+		{ field: "passengerid", headerName: "Passenger ID" },
+		{ field: "survived", headerName: "Survivor" },
+		{ field: "pclass", headerName: "Passenger Class" },
+		{ field: "name", headerName: "Name" },
+		{ field: "sex", headerName: "Sex" },
+		{ field: "age", headerName: "Age" },
+		{ field: "embarked", headerName: "Embarked" },
 	]);
 
 	const defaultColDef: ColDef = {
@@ -58,6 +62,7 @@ const GridExample = () => {
 	return (
 		<div style={{ width: "100%", height: "100%" }}>
 			<AgGridReact
+				theme={myTheme}
 				pagination={true}
 				rowData={rowData}
 				columnDefs={colDefs}
